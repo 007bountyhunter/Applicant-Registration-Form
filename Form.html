@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register for Canadian Immigration | Applicant Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script>
+		function submitForm (){
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/vGQqHFKrIFM8vaiK/",
+				type:"post",
+				data:$("#myForm").serializeArray(),
+				success: function(){
+					alert("Form Data Submitted :)")
+				},
+				error: function(){
+					alert("There was an error :(")
+				}
+			});
+		}
+	</script>
+    <style>
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        margin-top: 10px;
+      }
+    </style>
+    <script>
+      let educationCounter = 1;
+
+      function addEducationField() {
+        if (educationCounter >= 3) {
+          return;
+        }
+
+        const educationLabel = document.createElement('label');
+        educationLabel.setAttribute('for', 'edu' + (educationCounter + 1));
+        educationLabel.textContent = 'Education ' + (educationCounter + 1) + ':';
+        
+        const educationInput = document.createElement('input');
+        educationInput.setAttribute('type', 'text');
+        educationInput.setAttribute('id', 'edu' + (educationCounter + 1));
+        educationInput.setAttribute('name', 'Education ' + (educationCounter + 1));
+
+        const educationContainer = document.getElementById('education-container');
+        educationContainer.appendChild(educationLabel);
+        educationContainer.appendChild(educationInput);
+
+        educationCounter++;
+      }
+
+function submitForm (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/vGQqHFKrIFM8vaiK/',
+        type:'post',
+        data:$("#myForm").serializeArray(),
+        success: function(){
+          alert("Form Data Submitted :)")
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+
+    </script>
+  </head>
+
+
+
+
+
+
+  <body>
+    <h1>Applicant Registration Form</h1>
+    <form method="post" id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="Name" required>
+      <label for="country">Country:</label>
+      <select id="country" name="Country" required>
+        <option value="">Select a country</option>
+        <option value="Pakistan">Pakistan</option>
+        <option value="India">India</option>
+        <option value="Bangladesh">Bangladesh</option>
+      </select>
+      <label for="age">Age (in years):</label>
+      <input type="number" id="age" name="Age" min="16" max="80" required>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="Email" required>
+
+      <!-- Education -->
+      <h2>Education Section</h2>
+      <h3>Please list down all the Degrees that you have earned in Reverse Chronological Order!</h3>
+      <div id="complete-education-container">
+        <div id="education-container">
+          <label for="education1">Education 1:</label>
+          <input type="text" id="education1" name="Education 1" required>
+        </div>
+        <div id="education-container">
+          <label for="education2">Education 2:</label>
+          <input type="text" id="education2" name="Education 2" required>
+        </div>
+        <div id="education-container">
+          <label for="education3">Education 3:</label>
+          <input type="text" id="education3" name="Education 3" required>
+        </div>
+      </div>
+      
+      <!-- Work Experience -->
+      <h2>Work Experience</h2>
+      <h3>Please fill the Work Experience Fields in Reverse Chronological Order!</h3>
+      <div id="work-experience-container">
+        <div class="work-experience-field">
+          <label for="work-experience-1">Work Experience:</label>
+          <input type="text" id="work-experience-1" name="Work Experience 1" placeholder="Title of Experience" required>
+          <input type="number" id="work-experience-1-years" name="Years of Experience 1" placeholder="Years of Experience" min="0" max="50" required>
+        </div>
+        <div class="work-experience-field">
+          <label for="work-experience-1">Work Experience:</label>
+          <input type="text" id="work-experience-2" name="Work Experience 2" placeholder="Title of Experience" required>
+          <input type="number" id="work-experience-2-years" name="Years of Experience 2" placeholder="Years of Experience" min="0" max="50" required>
+        </div>
+        <div class="work-experience-field">
+          <label for="work-experience-1">Work Experience:</label>
+          <input type="text" id="work-experience-3" name="Work Experience 3" placeholder="Title of Experience" required>
+          <input type="number" id="work-experience-3-years" name="Years of Experience 3" placeholder="Years of Experience" min="0" max="50" required>
+        </div>
+        <div class="work-experience-field">
+          <label for="work-experience-1">Work Experience:</label>
+          <input type="text" id="work-experience-4" name="Work Experience 4" placeholder="Title of Experience" required>
+          <input type="number" id="work-experience-4-years" name="Years of Experience 4" placeholder="Years of Experience" min="0" max="50" required>
+        </div>
+        <div class="work-experience-field">
+          <label for="work-experience-1">Work Experience:</label>
+          <input type="text" id="work-experience-5" name="Work Experience 5" placeholder="Title of Experience" required>
+          <input type="number" id="work-experience-5-years" name="Years of Experience 5" placeholder="Years of Experience" min="0" max="50" required>
+        </div>
+      </div>
+      
+      <!-- Skills -->
+      <h2>Skills Section</h2>
+      <h3>Please write down Technical Skills you have! (Ex. Project Management, Website Development, etc.)</h3>
+      <div id="complete-skills-container">
+        <div id="skills-container">
+          <label for="skill1">Skill 1:</label>
+          <input type="text" id="skill1" name="Skill 1" required>
+        </div>
+        <div id="skills-container">
+          <label for="skill2">Skill 2:</label>
+          <input type="text" id="skill2" name="Skill 2" required>
+        </div>
+        <div id="skills-container">
+          <label for="skill3">Skill 3:</label>
+          <input type="text" id="skill3" name="Skill 3" required>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Expected Date of Arrival -->
+
+      <label for="arrival">Expected Date of Arrival:</label>
+      <input type="date" id="arrival" name="Arrival" required><br>
+
+      <!-- Need Help finding Job -->
+
+      <label for="job_help">Do you need help finding a job in Canada?</label>
+      <select id="job_help" name="Job Help" required>
+        <option value="">Select an option</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <!-- Need Help finding Place to Live -->
+
+      <label for="place_help">Do you need help finding a place to live in Canada?</label>
+      <select id="place_help" name="Place Help" required>
+        <option value="">Select an option</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <!-- Number of Family Members -->
+
+      <label for="family">Number of family members immigrating with you:</label>
+      <input type="number" id="family" name="Family Members" min="0" max="13" required>
+      <input type="hidden" id="date_submitted" name="Date Submitted" value="<?php echo date('Y-m-d'); ?>">
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+  </body>
+</html>
